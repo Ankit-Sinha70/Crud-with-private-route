@@ -1,50 +1,7 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
 
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  text-align: center;
 }
 
 .error-container {
@@ -53,25 +10,27 @@ body {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(212, 18, 18, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, #6dfd1a17 0px 32px 16px;
+  max-width: 600px;
 }
 
-h1 {
-  font-size: 100px;
+h4 {
+  font-size: 25px;
   color: #f44336;
   margin: 0;
+  font-weight: 700;
 }
 
 p {
   font-size: 20px;
   margin: 10px 0;
+  font-weight: 600;
 }
 
 a {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
+  /* padding: 10px 20px; */
+  background-color: #48753d;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;

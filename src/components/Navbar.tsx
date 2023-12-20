@@ -30,6 +30,7 @@ const Navbar = () => {
         ) : (
           ""
         )}
+        {/* <Link to="/productlist">Products</Link> */}
         <Link to="/about">About</Link>
         {localStorage.getItem("isSignedIn") ? (
           <Button onClick={handlelogOut}>LogOut</Button>

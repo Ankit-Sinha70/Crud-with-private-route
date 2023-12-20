@@ -23,8 +23,8 @@ const Dashboard = () => {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "15px",
-            padding: "30px",
+            gap: "30px",
+            padding: "20px",
           }}
         >
           {users?.map((item: any) => {
@@ -33,7 +33,7 @@ const Dashboard = () => {
                 <Box
                   style={{
                     backgroundColor: "#d7dad8",
-                    padding: "15px",
+                    padding: "5px",
                     borderRadius: "20px",
                     boxShadow:
                       " rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
@@ -56,10 +56,12 @@ const Dashboard = () => {
                     <Heading as={"h5"} size={"md"}>
                       Created:- {item.createdAt}
                     </Heading>
-                    <ButtonGroup spacing={2}>
+                    <ButtonGroup spacing={1}>
                       <Button
                         colorScheme="teal"
                         onClick={() => dispatch(deleteUserList(item.id) as any)}
+                        padding="10px"
+                        margin="20px"
                       >
                         Delete
                       </Button>

@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import LogIn from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
@@ -34,6 +33,7 @@ const AllRoutes = () => {
           />
           <Route path="/about" element={<About />} />
           <Route path="/edit/:id" element={< UpdatePage/>}/>
+          {/* <Route path="/productlist" element={< ProductList/>}/> */}
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </div>

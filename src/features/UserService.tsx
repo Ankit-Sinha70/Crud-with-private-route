@@ -80,3 +80,54 @@ export const updateUserList = createAsyncThunk(
     }
   }
 );
+
+// // Get/display the productlist....
+// export const displayProductList = createAsyncThunk(
+//   "displayProductList",
+//   async () => {
+//     const response = await fetch("https://fakestoreapi.com/products");
+//     try {
+//       const result = await response.json();
+//       return result;
+//     } catch (error) {
+//       alert("Something went wrong");
+//     }
+//   }
+// );
+
+// // create the product List....
+
+// export const createProductList = createAsyncThunk(
+//   "createProductList",
+//   async (data: any) => {
+//     const response = await fetch("https://fakestoreapi.com/products", {
+//       method: "POST",
+//       headers: {
+//         "content-type": "application/json",
+//       },
+//       body: JSON.stringify(data),
+//     });
+//     try {
+//       const result = await response.json();
+//       return result;
+//     } catch (error) {
+//       alert("Error creating product list");
+//     }
+//   }
+// );
+
+// // delete the product List
+// export const deleteProductList: any = createAsyncThunk(
+//   "deleteProductList",
+//   async (id: any) => {
+//     const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+//       method: "DELETE",
+//     });
+//     try {
+//       const result = await response.json();
+//       return result;
+//     } catch (error) {
+//       alert("Error Deleting product list");
+//     }
+//   }
+// );

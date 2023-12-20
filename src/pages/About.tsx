@@ -14,23 +14,17 @@ const About = () => {
   return (
     <>
       <Box>
-        <Heading as="h2" size="lg">
-          {" "}
+        <Heading as="h2" size="lg" margin={"25px"}>
           About page...
         </Heading>
-        <Box sx={{ margin: "50px" }}>
-          <p style={{ fontWeight: "700" }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            ipsum ad deserunt repellat corrupti soluta repudiandae assumenda
-            reiciendis quasi magni quae, quam excepturi. Cupiditate dolor earum
-            debitis nisi qui doloremque sequi dicta quaerat magnam, nam laborum
-            rerum doloribus ratione incidunt iste provident facere modi odit.
-            Fugit nostrum magnam eligendi et!
+        <Box sx={{ margin: "30px" }}>
+          <p style={{ fontWeight: "600", fontSize:"15px" }}>
+          The company itself is a very successful company. Something drives the corrupt to desert, to assume the loose rejection of rejection as if it were something great that they would accept. The pain of these debts is due to desire, unless he who follows the sayings seeks a great deal, for he hates to do the things they provide for the pains of the things that fall on the basis of pains. Escapes our great choice and!
           </p>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Card
-            sx={{ backgroundColor: "#b6e6c6", width: "50%", margin: "50px", borderRadius:"30px" }}
+            sx={{ backgroundColor: "#b6e6c6", width: "50%", margin: "30px", borderRadius:"30px" }}
           >
             <CardHeader>
               <Heading size="md">Client Report</Heading>
@@ -65,20 +59,8 @@ const About = () => {
             </CardBody>
           </Card>
           <Box sx={{ width: "50%", margin: "50px" }}>
-            <p >
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime,
-              placeat, dicta perspiciatis dignissimos nisi beatae repellendus
-              obcaecati enim in officia quam tempore unde iusto saepe
-              exercitationem tenetur voluptatem alias velit fugiat doloremque
-              corrupti praesentium, pariatur quis? Minus assumenda, nobis
-              cupiditate provident doloremque unde magni hic! Nisi explicabo quo
-              doloremque tempore rem modi porro sint qui. Saepe, voluptates
-              alias. Tempora corrupti aliquid voluptate delectus illum a dicta
-              quibusdam impedit velit, aliquam repellendus consectetur provident
-              cumque nulla dolorum unde veniam neque enim esse nemo tenetur
-              blanditiis! Cupiditate eveniet ex debitis quisquam, facere optio
-              necessitatibus? Molestiae, esse. Dolor minima tempore sunt? Ab,
-              ducimus?
+            <p style={{fontSize:"15px"}}>
+            Thank you very much. Most of all, it pleases you to see what has been said, the most deserving, except the blessed, are repulsed, for they are blinded to the duties of what time, whence the regular exercise is often held; the pleasure, otherwise, he wants to flee, and the pain of the corrupt present, who is spared? To assume less, they provide us with desire and pain from which the great here! But I will explain at what pain and time the matter will be resolved further on. Often, other pleasures. Corrupted times, when something has been chosen for pleasure, it is hindered by what some have said, they provide for some repulsion, and there are no pains from which to come, and no one is bound by flattery! Will anyone come out of debt with desire, to make a choice of needs? Trouble, to be. Are they the least painful at the time? From, we lead?
             </p>
           </Box>
         </Box>
