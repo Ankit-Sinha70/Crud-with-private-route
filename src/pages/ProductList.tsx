@@ -1,133 +1,92 @@
-// import { Box, Button, FormLabel, Heading, Input } from "@chakra-ui/react";
-// import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { createProductList, deleteProductList, displayProductList } from "../features/UserService";
+import { Button, ButtonGroup, Heading } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { createProductList } from "../features/UserService";
 
-// const ProductList = () => {
-//   const products: any = useSelector((state: any) => state?.app?.products);
-//   console.log(products, "`this is a list of products");
-//   const dispatch = useDispatch();
-//   const [inputValue, setInputValue] = useState({
-//     title:"",
-//     image:"",
-//     price:"",
-//     description:"",
-//   });
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  description: string;
+}
 
-//   useEffect(() => {
-//     dispatch(displayProductList() as any);
-//   }, []);
+interface ProductListProps {
+  cart: any[]; 
+  setCart: React.Dispatch<React.SetStateAction<any[]>>; 
+}
 
-//   const handleChange = (e:any) => {
-//     const { name, value } = e.target;
-//     setInputValue({
-//       ...inputValue,
-//       [name]: value,
-//     });
-//   };
+const ProductList: React.FC<ProductListProps> = ({ cart, setCart }) => {
+  const [posts, setPosts] = useState<Product[]>([]);
+  const dispatch = useDispatch();
 
-//   const handleSubmit = (e: any) => {
-//     console.log(e, "handleSubmit");
-//     e.preventDefault();
-//     dispatch(createProductList(inputValue) as any);
-//   };
-//   return (
-//     <>
-//       <Box sx={{ margin: "50px", width: "40%" }}>
-//         <form onSubmit={handleSubmit}>
-//           <FormLabel>Title</FormLabel>
-//           <Input
-//             type="text"
-//             name="title"
-//             placeholder="Product Name"
-//             onChange={handleChange}
-//             value={inputValue.title}
-//           />
-//           <br />
-//           <FormLabel>Image</FormLabel>
-//           <Input
-//             type="text"
-//             name="image"
-//             placeholder="Product Image"
-//             onChange={handleChange}
-//             value={inputValue.image}
-//           />
-//           <br />
-//           <FormLabel>Price</FormLabel>
-//           <Input
-//             type="text"
-//             name="price"
-//             placeholder="Product Price"
-//             onChange={handleChange}
-//             value={inputValue.price}
-//           />
-//           <br />
-//           <FormLabel>Description</FormLabel>
-//           <Input
-//             type="text"
-//             name="description"
-//             placeholder="Product Description"
-//             onChange={handleChange}
-//             value={inputValue.description}
-//           />
-//           <br />
-//           <br />
-//           <Button colorScheme="green">Add Product</Button>
-//         </form>
-//       </Box>
-//       <Box>
-//         <Heading as={"h3"} textAlign={"center"}>
-//           Product List Page
-//         </Heading>
-//       </Box>
-//       <Box
-//         sx={{
-//           display: "grid",
-//           gridTemplateColumns: "repeat(3, 1fr)",
-//           gap: "20px",
-//           margin: "50px",
-//         }}
-//       >
-//         {products?.products?.map((item: any) => {
-//           return (
-//             <>
-//               <Box
-//                 sx={{
-//                   padding: "10px",
-//                   borderRadius: "25px",
-//                   boxShadow: " rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset",
-//                 }}
-//                 key={item.id}
-//               >
-//                 <img
-//                   style={{ margin: "10px" }}
-//                   src={item.thumbnail}
-//                   alt={item.thumbnail}
-//                   width={"200px"}
-//                 />
-//                 <Heading as={"h4"}>{item.brand}</Heading>
-//                 <Heading as={"h5"} size={"md"}>
-//                   {item.title}
-//                 </Heading>
-//                 <Heading as={"h6"} size={"md"}>
-//                   {item.description}
-//                 </Heading>
-//                 <p>Price:-{item.price}$</p>
-//                 <p>Rating:-{item.rating}</p>
-//                 <p>Stock:-{item.stock}</p>
-//                 <Button
-//                   colorScheme="green"
-//                   onClick={() => dispatch(deleteProductList(item.id))}
-//                 >
-//                   Delete
-//                 </Button>
-//               </Box>
-//             </>
-//           );
-//         })}
-//       </Box>
-//     </>
-//   );
-// };
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data: Product[]) => setPosts(data))
+      .catch((error) => console.log(error));
+    // dispatch(createProductList(posts))
 
-// export default ProductList;
+  }, []);
+
+  const handleDelete = (item: Product) => {
+    const updatedItem = posts.filter((data: Product) => data.id !== item.id);
+    setPosts(updatedItem);
+  };
+
+  const handleAddToCart = (item: Product) => {
+    console.log(item);
+    const newItem = { ...item, quantity: 1 };
+    setCart((prevCart) => [...prevCart, newItem]);
+  };
+
+  return (
+    <>
+      <div>
+        <Heading as="h3">Product Page.</Heading>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
+        {posts.map((item) => {
+          return (
+            <div
+              key={item.id}
+              style={{
+                border: "1px solid black",
+                margin: "10px",
+                padding: "10px",
+                borderRadius: "15px",
+              }}
+            >
+              <img src={item.image} alt={item.title} width="100px" />
+              <Heading as="h4" size="sm">
+                {item.title}
+              </Heading>
+              <Heading as="h5" size="xs">{item.description}</Heading>
+              <Heading as="h4" size="sm">
+                Rs.{item.price}
+              </Heading>
+              <ButtonGroup sx={{ gap: "4" }}>
+                <Button
+                  colorScheme="teal"
+                  size={"sm"}
+                  onClick={() => handleDelete(item)}
+                >
+                  Delete Product
+                </Button>
+                <Button
+                  colorScheme="teal"
+                  size={"sm"}
+                  onClick={() => handleAddToCart(item)}
+                >
+                  Add To Cart
+                </Button>
+              </ButtonGroup>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default ProductList;

@@ -81,19 +81,20 @@ export const updateUserList = createAsyncThunk(
   }
 );
 
-// // Get/display the productlist....
-// export const displayProductList = createAsyncThunk(
-//   "displayProductList",
-//   async () => {
-//     const response = await fetch("https://fakestoreapi.com/products");
-//     try {
-//       const result = await response.json();
-//       return result;
-//     } catch (error) {
-//       alert("Something went wrong");
-//     }
-//   }
-// );
+
+// Get/display the productlist....
+export const createProductList = createAsyncThunk(
+  "displayProductList",
+  async () => {
+    const response = await fetch("https://fakestoreapi.com/products");
+    try {
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      alert("Something went wrong");
+    }
+  }
+);
 
 // // create the product List....
 

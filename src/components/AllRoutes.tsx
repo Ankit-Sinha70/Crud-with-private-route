@@ -7,8 +7,16 @@ import About from "../pages/About";
 import PrivateRoute from "./PrivateRoute";
 import UpdatePage from "../pages/UpdatePage";
 import ErrorPage from "../pages/ErrorPage";
+import ProductList from "../pages/ProductList";
+import { useState } from "react";
+import CartPage from "../pages/CartPage";
 
-const AllRoutes = () => {
+
+interface AllRoutesProps {}
+
+const AllRoutes: React.FC<AllRoutesProps> = () => {
+
+  const [cart, setCart] = useState<any[]>([]);
   return (
     <>
       <div>
@@ -31,9 +39,10 @@ const AllRoutes = () => {
               </PrivateRoute>
             }
           />
-          <Route path="/about" element={<About />} />
+          {/* <Route path="/about" element={<About />} /> */}
           <Route path="/edit/:id" element={< UpdatePage/>}/>
-          {/* <Route path="/productlist" element={< ProductList/>}/> */}
+          {/* <Route path="/productlist" element={< ProductList cart={cart} setCart={setCart}/>}/> */}
+          {/* <Route path="/cartpage" element={<CartPage cart={cart} setCart={setCart} />} /> */}
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </div>
