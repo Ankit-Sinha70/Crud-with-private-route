@@ -30,9 +30,9 @@ const Navbar = () => {
         ) : (
           ""
         )}
-        {/* <Link to="/productlist">Products</Link> */}
-        {/* <Link to="/about">About</Link> */}
-        {/* <Link to="/cartpage">Cart Page</Link> */}
+        <Link to="/productlist">Products</Link>
+        <Link to="/about">About</Link>
+        <Link to="/cartpage">Cart Page</Link>
         {localStorage.getItem("isSignedIn") ? (
           <Button onClick={handlelogOut}>LogOut</Button>
         ) : (

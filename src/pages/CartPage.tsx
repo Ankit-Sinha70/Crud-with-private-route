@@ -1,4 +1,11 @@
 import { Button, ButtonGroup, Heading } from "@chakra-ui/react";
+import { IoAddOutline } from "react-icons/io5";
+import { FiMinus } from "react-icons/fi";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRupeeSign } from "react-icons/fa";
+import { FaOpencart } from "react-icons/fa";
+import { Divider } from '@chakra-ui/react'
+
 
 interface CartItem {
   id: number;
@@ -53,72 +60,97 @@ const CartPage: React.FC<CartPageProps> = ({ cart, setCart }) => {
   };
   return (
     <>
-      <div
-        style={{
-          boxShadow:
-            " rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
-            width:"30%",
-            padding:"10px",
-            margin:"20px",
-            borderRadius:"15px",
-          
-        }}
-      >
-        <Heading as="h4" size="sm">
-          Cart Page..
-        </Heading>
-
-        <Heading as="h4" size="sm">
-          Cart Total = {calculateTotalPrice()}
-        </Heading>
-      </div>
-      <div>
-        {cart.map((item) => (
+      {cart?.length === 0 ? (
+        <div
+          style={{
+            width: "100%",
+            padding: "10px",
+            borderRadius: "15px",
+            textAlign: "center",
+            justifyContent: "center"
+          }}
+        >
+         
+          <FaOpencart style={{fontSize:"300px", color:"gray", width:"100%"}}/>
+          <Divider style={{width:"70%",margin:"auto", color:"ActiveBorder"}} />
+          <Heading as="h4" size="xl">
+           Your cart is empty !
+          </Heading>
+        </div>
+      ) : (
+        <>
+        <div style={{display:"flex", flexDirection:"row",gap:"10px", width:"100%"}}>
+        
+          <div>
+            {cart.map((item) => (
+              <div
+                key={item.id}
+                style={{
+                  borderRadius: "15px",
+                  margin: "20px",
+                  padding: "10px",
+                  width: "70%",
+                  boxShadow:
+                    " rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+                }}
+              >
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <img src={item.image} alt={item.title} width={"100px"} />
+                  Qty: {item.quantity}
+                  <ButtonGroup>
+                    <Button
+                      colorScheme="red"
+                      size="sm"
+                      onClick={() => handleClick(item)}
+                    >
+                      <FaRegTrashAlt />
+                    </Button>
+                    <Button
+                      colorScheme="green"
+                      size="sm"
+                      onClick={() => handleAddItem(item.id)}
+                    >
+                      <IoAddOutline />
+                    </Button>
+                    <Button
+                      colorScheme="red"
+                      size="sm"
+                      onClick={() => handleMinus(item.id)}
+                    >
+                      <FiMinus />
+                    </Button>
+                  </ButtonGroup>
+                </div>
+                <span>
+                  {item.title}
+                </span>
+                <span>
+                  $.{item.price}
+                </span>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  Total Price:
+                  <strong>${item.totalPrice ? item.totalPrice : item.price}</strong>
+                </div>
+              </div>
+            ))}
+          </div>
           <div
-            key={item.id}
             style={{
-              borderRadius: "15px",
-              margin: "20px",
-              padding: "10px",
               width: "30%",
-              boxShadow:
-                " rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+              padding: "10px",
+              margin: "20px",
+              borderRadius: "15px",
             }}
           >
-            <img src={item.image} alt={item.title} width={"100px"} />
             <Heading as="h4" size="sm">
-              {item.title}
+              Cart Total = {calculateTotalPrice()}
             </Heading>
-            <Heading as="h4" size="sm">
-              Rs.{item.price}
-            </Heading>
-            Total : Rs. {item.totalPrice ? item.totalPrice : item.price}
-            <ButtonGroup>
-              <Button
-                colorScheme="red"
-                size="sm"
-                onClick={() => handleClick(item)}
-              >
-                Remove Item
-              </Button>
-              <Button
-                colorScheme="green"
-                size="sm"
-                onClick={() => handleAddItem(item.id)}
-              >
-                Add Item
-              </Button>
-              <Button
-                colorScheme="red"
-                size="sm"
-                onClick={() => handleMinus(item.id)}
-              >
-                Minus Item
-              </Button>
-            </ButtonGroup>
           </div>
-        ))}
-      </div>
+        </div>
+        </>
+      )}
     </>
   );
 };

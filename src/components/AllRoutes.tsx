@@ -39,10 +39,10 @@ const AllRoutes: React.FC<AllRoutesProps> = () => {
               </PrivateRoute>
             }
           />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<About />} />
           <Route path="/edit/:id" element={< UpdatePage/>}/>
-          {/* <Route path="/productlist" element={< ProductList cart={cart} setCart={setCart}/>}/> */}
-          {/* <Route path="/cartpage" element={<CartPage cart={cart} setCart={setCart} />} /> */}
+          <Route path="/productlist" element={< ProductList cart={cart} setCart={setCart}/>}/>
+          <Route path="/cartpage" element={<CartPage cart={cart} setCart={setCart} />} />
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </div>

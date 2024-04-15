@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   createProductList,
   createUserList,
+  deleteProductList,
   deleteUserList,
+  displayProductList,
   displayUserList,
   updateUserList,
 } from "./UserService";
@@ -104,38 +106,38 @@ export const UserSlice = createSlice({
 
 
       // // display the product list
-      // .addCase(displayProductList.pending, (state: any) => {
-      //   state.loading = true;
-      //   state.isSuccess = false;
-      // })
-      // .addCase(displayProductList.fulfilled, (state: any, action: any) => {
-      //   state.loading = false;
-      //   state.isSuccess = true;
-      //   state.products = action.payload;
-      // })
-      // .addCase(displayProductList.rejected, (state: any, action: any) => {
-      //   state.loading = false;
-      //   state.isSuccess = false;
-      //   state.products = action.payload;
-      // })
+      .addCase(displayProductList.pending, (state: any) => {
+        state.loading = true;
+        state.isSuccess = false;
+      })
+      .addCase(displayProductList.fulfilled, (state: any, action: any) => {
+        state.loading = false;
+        state.isSuccess = true;
+        state.products = action.payload;
+      })
+      .addCase(displayProductList.rejected, (state: any, action: any) => {
+        state.loading = false;
+        state.isSuccess = false;
+        state.products = action.payload;
+      })
 
       // // delete the product list
 
-      // .addCase(deleteProductList.pending, (state: any) => {
-      //   state.loading = true;
-      //   state.isSuccess = false;
-      // })
-      // .addCase(deleteProductList.fulfilled, (state: any, action: any) => {
-      //   state.loading = false;
-      //   state.isSuccess = true;
-      //   const { id } = action.payload;
-      //   state.products = state.products.filter((ele: any) => ele.id !== id);
-      // })
-      // .addCase(deleteProductList.rejected, (state: any, action: any) => {
-      //   state.loading = false;
-      //   state.isSuccess = false;
-      //   state.products = action.payload;
-      // })
+      .addCase(deleteProductList.pending, (state: any) => {
+        state.loading = true;
+        state.isSuccess = false;
+      })
+      .addCase(deleteProductList.fulfilled, (state: any, action: any) => {
+        state.loading = false;
+        state.isSuccess = true;
+        const { id } = action.payload;
+        state.products = state.products.filter((ele: any) => ele.id !== id);
+      })
+      .addCase(deleteProductList.rejected, (state: any, action: any) => {
+        state.loading = false;
+        state.isSuccess = false;
+        state.products = action.payload;
+      })
   },
 });
 
